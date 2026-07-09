@@ -41,7 +41,7 @@ This repository provides a self-contained blueprint to test distributed MQTT str
 Unlike traditional architectures, EMQX v5 forms a **Peer-to-Peer (Active-Active)** topology among its Core nodes using Erlang's distributed database (*Mnesia/Mria*). 
 * **No Master/Slave:** All 3 deployed pods(`emqx-0`, `emqx-1`, `emqx-2`) have identical write/read privileges.
 * **Bi-directional Replication:** Subscriptions and messages are replicated instantly between pairs across the internal cluster network.
-* **Quorum Rule:** A cluster of $N=3$ nodes requires a strict majority of $\cfloor N/2 \rfloor + 1 = 2$ living nodes to remain functional and avoid split-brain scenarios.
+* **Quorum Rule:** A cluster of $N=3$ nodes requires a strict majority of living nodes to remain functional and avoid split-brain scenarios.
 
 ![schema](media/schema.png)Cleanup
 To tear down the playground environment:
