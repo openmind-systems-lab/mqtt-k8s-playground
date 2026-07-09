@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: omsl-mqtt-client
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: omsl-mqtt-client
+  template:
+    metadata:
+      labels:
+        app: omsl-mqtt-client
+    spec:
+      containers:
+      - name: client
+        image: openmind-systems-lab/mqtt-client:local
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: MQTT_BROKER_URL
+          value: "tcp://omsl-emqx-listeners.default.svc.cluster.local:1883"
